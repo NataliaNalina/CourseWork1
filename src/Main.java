@@ -5,10 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Coursework 1");
-
         initEmployees();
         printCompleteDateOfEmployees();
-
         System.out.println("Сумма затрат в месяц равна " + getCostAmount());
         System.out.println("Сотрудник с минимальной зарплатой " + EmployeeWithMinSumma());
         System.out.println("Сотрудник с максимальной зарплатой " + EmployeeWitMaxSumma());
