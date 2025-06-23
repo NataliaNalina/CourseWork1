@@ -1,13 +1,15 @@
 public class Employee {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String surName;
-    private int department;
-    private int salary;
 
-    public Employee(int id, String firstName, String lastName, String surName, int department, int salary){
-        this.id = id;
+    private static int idGenerator =  1;
+    private final int id;
+    private final String firstName;
+    private final String lastName;
+    private final String surName;
+    private int department;
+    private double salary;
+
+    public Employee(String firstName, String lastName, String surName, int department, double salary) {
+        id = idGenerator++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.surName = surName;
@@ -15,19 +17,19 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return lastName;
     }
 
-    public String getSurName(){
+    public String getSurName() {
         return surName;
     }
 
@@ -35,7 +37,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -43,13 +45,13 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
     @Override
     public String toString() {
-        return  "Сотрудник " + this.lastName + " " + this.firstName + " " + this.surName + " подразделение: "+ this.department + " текущая зарплата: "+ this.salary;
+        return this.id + " " + this.lastName + " " + this.firstName + " " + this.surName + " подразделение: " + this.department + " текущая зарплата: " + String.format("%.2f", this.salary);
     }
 
     @Override
@@ -58,11 +60,15 @@ public class Employee {
             return false;
         }
         Employee c2 = (Employee) other;
-        return this.id == c2.id && this.firstName.equals(c2.firstName) && this.lastName.equals(c2.lastName) && this.surName.equals(c2.surName)  && this.department == c2.department && this.salary == c2.salary;
+        return this.id == c2.id && this.firstName.equals(c2.firstName) && this.lastName.equals(c2.lastName) && this.surName.equals(c2.surName) && this.department == c2.department && this.salary == c2.salary;
     }
 
     @Override
     public int hashCode() {
         return java.util.Objects.hash(id, firstName, lastName, surName, department, salary);
+    }
+
+    public String toStringWWithoutDeputment() {
+        return "Сотрудник " + this.lastName + " " + this.firstName + " " + this.surName + " текущая зарплата: " + String.format("%.2f", this.salary);
     }
 }
