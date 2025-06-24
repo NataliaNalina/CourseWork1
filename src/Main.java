@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Main {
+
     private final static Employee[] people = new Employee[10];
 
     public static void main(String[] args) {
@@ -8,8 +9,8 @@ public class Main {
         initEmployees();
         printCompleteDateOfEmployees();
         System.out.println("Сумма затрат в месяц равна " + getCostAmount());
-        System.out.println("Сотрудник с минимальной зарплатой " + EmployeeWithMinSumma());
-        System.out.println("Сотрудник с максимальной зарплатой " + EmployeeWitMaxSumma());
+        System.out.println("Сотрудник с минимальной зарплатой " + employeeWithMinSumma());
+        System.out.println("Сотрудник с максимальной зарплатой " + employeeWitMaxSumma());
         System.out.println("Средняя зарплата сотрудников: " + averageSumma());
         System.out.println("Список ФИО сотрудников:");
         printListEmployees();
@@ -49,29 +50,29 @@ public class Main {
         return summa;
     }
 
-    private static Employee EmployeeWithMinSumma() {
+    private static Employee employeeWithMinSumma() {
         double minSumma = Integer.MAX_VALUE;
-        Employee EmployeeForReturn = null;
+        Employee employeeForReturn = null;
         for (Employee employer : people) {
             if (employer != null && employer.getSalary() < minSumma) {
                 minSumma = employer.getSalary();
-                EmployeeForReturn = employer;
+                employeeForReturn = employer;
             }
         }
-        return EmployeeForReturn;
+        return employeeForReturn;
     }
 
-    private static Employee EmployeeWitMaxSumma() {
+    private static Employee employeeWitMaxSumma() {
         double maxSumma = 0;
-        Employee EmployeeForReturn = null;
+        Employee employeeForReturn = null;
         int id = 0;
         for (Employee employer : people) {
             if (employer != null && employer.getSalary() > maxSumma) {
                 maxSumma = employer.getSalary();
-                EmployeeForReturn = employer;
+                employeeForReturn = employer;
             }
         }
-        return EmployeeForReturn;
+        return employeeForReturn;
     }
 
     private static double averageSumma() {
@@ -135,27 +136,27 @@ public class Main {
     }
     private static Employee minSalaryDepartment( int departmentNumber) {
             double minSumma = Double.MAX_VALUE;
-            Employee EmployeeForReturn = null;
+            Employee employeeForReturn = null;
             for (Employee employer : people) {
                 if (employer != null && employer.getDepartment() == departmentNumber && employer.getSalary() < minSumma) {
                     minSumma = employer.getSalary();
-                    EmployeeForReturn = employer;
+                    employeeForReturn = employer;
                 }
             }
-            return EmployeeForReturn;
+            return employeeForReturn;
         }
 
     private static Employee maxSalaryDepartment(int departmentNumber) {
         double maxSumma = 0;
-        Employee EmployeeForReturn = null;
+        Employee employeeForReturn = null;
 
         for (Employee employer : people) {
             if (employer!= null && employer.getDepartment() == departmentNumber && employer.getSalary() > maxSumma) {
                 maxSumma = employer.getSalary();
-                EmployeeForReturn = employer;
+                employeeForReturn = employer;
             }
         }
-        return EmployeeForReturn;
+        return employeeForReturn;
     }
     private static int getCostAmountDepartment(int departmentNumber) {
         int summa = 0;
